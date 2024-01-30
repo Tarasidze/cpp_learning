@@ -45,6 +45,50 @@ struct Str {
 };
 
 
+struct Example {
+    static int x; // static variable
+    static void f() {
+        std::cout << "example";
+    }
+};
+
+int Example::x = 1;
+
+struct Singleton {
+    private:
+        Singleton() {}
+        static Singleton* ptr;
+
+        Singleton(const Singleton&) = delete;
+        Singleton& operator=(const Singleton) = delete;
+    
+    public:
+        const Singleton& getObject() {
+            if (ptr == nullptr) {
+                ptr = new Singleton();
+            }
+            return *ptr;
+        }
+};
+
+Singleton* Singleton::ptr = nullptr;
+
+
+// explicit conversion
+
+struct Latitude {
+    double value;
+    explicit Latitude(double value): value(value) {}
+
+    operator double() const {
+        return value;
+    }
+};
+
+struct Longitude {
+    double value;
+    explicit Longitude(double value): value(value) {}
+};
 
 int main () {
 
