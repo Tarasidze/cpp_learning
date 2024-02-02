@@ -53,9 +53,9 @@ int main() {
 
     std::cout << a.c << "\n";
 
-    AA aa;
+    // AA aa;
 
-    std::cout << sizeof(aa) << "\n";
+    // std::cout << sizeof(aa) << "\n";
 
 
 
