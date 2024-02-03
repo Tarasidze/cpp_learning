@@ -1,14 +1,14 @@
 // Operators overloading
 #include <iostream>
 #include <string>
-#include<compare>
+#include <compare>
 
 struct Complex {
     double re = 0.0;
     double im = 0.0;
 
     // Operator spaceship
-    std::weak_ordering operator <=>(const Complex& other) = default;
+    std::weak_ordering const operator<=>(const Complex& other) const = default;
 
 
     // & - one umpersant only to l-value
@@ -57,6 +57,27 @@ bool operator<(const Complex& a, const Complex& b) {
 bool operator>(const Complex& a, const Complex&b) {
     return b < a;
 }
+
+struct UserId {
+    int value = 0;
+
+    UserId operator++() {
+        ++value;
+        return *this;
+    }
+    UserId operator++(int) {
+        UserId copy = *this;
+        ++copy.value;
+        return copy;
+    }
+};
+
+
+struct Greater {
+    bool operator()(int x, int y) const {
+        return x > y;
+    }
+};
 
 
 int main() {
