@@ -1,7 +1,7 @@
 #include <iostream>
 
 
-// 3.7 Pointers ot members
+// 3.7 Pointers to members
 
 
 struct S {
