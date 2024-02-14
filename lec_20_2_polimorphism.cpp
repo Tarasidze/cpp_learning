@@ -5,7 +5,14 @@
 struct Shape {
     virtual double area() const = 0;
     virtual ~Shape() = default;
+    virtual void f(int x) const {
+        std::cout << x << "\n";
+    }
 };
+
+double Shape::area() const {
+    return 99.99;
+}
 
 struct Square: Shape {
     double a;
@@ -25,6 +32,11 @@ struct Circle: Shape {
 
 
 int main () {
+
+    Circle c(3.0);
+    c.Shape::f(7);
+    std::cout << c.Shape::area() << "\n";
+
     std::vector<Shape*> v;
     v.push_back(new Square(2.0));
     v.push_back(new Circle(1.0));
